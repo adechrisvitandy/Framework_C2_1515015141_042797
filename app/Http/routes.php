@@ -17,3 +17,13 @@ Route::get('/', function () {
 Route::get('/public', function () {
     return ('Nama saya : Adechrisvitandy');
 });
+Route::get('hello-word', function () {
+    return ('Hello word');
+});
+Route::get('pengguna/{pengguna}', function ($pengguna) {
+    return ("Hello word dari pengguna $pengguna");
+});
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
