@@ -80,6 +80,8 @@
             <nav class="navbar navbar-default navbar-fixed-bottom">
                 <footer class="container">
                     created by <a href="#"><span><i class="fa fa-twitter" style"color#1da1f2"></i>Ade C</span></a>
+                    <br>
+                     Tiada yang sempurna kesempurnaan hanya milik Dosen dan yg Esa
                 </footer>
             </nav>
             <script type="text/javascript" src="{{asset('component/jquery/dist/jquery.min.js') }}"></script>

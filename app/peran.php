@@ -12,4 +12,10 @@ class peran extends Model
     {
         return $this->belongsTo(pengguna::class);
     }
+     public function Dosen(){
+    	return $this->hasOne(Dosen::class);
+    }
+    public function Mahasiswa(){
+    	return $this->hasOne(Mahasiswa::class);
+    }
 }
