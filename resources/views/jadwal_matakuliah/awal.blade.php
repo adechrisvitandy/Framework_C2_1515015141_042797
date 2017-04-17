@@ -4,7 +4,7 @@
 <div class="panel-heading">
 <strong>Seluruh Data jadwal matakuliah</strong>
 <a href="{{url('jadwal_matakuliah/tambah')}}" class="btn btn-xs btn-primary pull-right">
- <i class="fa fa-plus"></i>jadwal_matakuliah</a>
+ <i class="fa fa-plus"></i>jadwal matakuliah</a>
  <div class="clearfix"></div>
  </div>
  <table class="table">
@@ -24,7 +24,7 @@
              <td>{{$x++}}</td>
               <td>{{$jadwal_matakuliah->mahasiswa->nama or 'nama kosong'}}</td>
                <td>{{$jadwal_matakuliah->mahasiswa->nim or 'nim kosong'}}</td>
-                <td>{{ $jadwal_matakuliah->dosen_matakuliah->matakuliah->title or 'matakuliah Kosong' }}</td>
+                <td>{{$jadwal_matakuliah->dosen_Matakuliah->matakuliah->title or 'matakuliah Kosong' }}</td>
                        <td>
                <div class="btn-group" role="group">
                <a href="{{url('jadwal_matakuliah/edit/'.$jadwal_matakuliah->id)}}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="ubah">

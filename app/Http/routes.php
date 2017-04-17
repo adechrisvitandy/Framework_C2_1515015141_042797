@@ -10,6 +10,50 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/coba', function()
+{
+	return \App\dosen_matakuliah::whereHas('dosen',function($query)
+	{
+		$query->where('nama','like','%a%');
+	})->with('dosen')->groupBy('dosen_id')->get();
+});
+
+Route::get('/coba2', function()
+{
+	return \App\dosen_matakuliah::whereHas('dosen',function($query)
+	{
+		$query->where('nama','like','%a%');
+	})->orWhereHas('matakuliah',function($kueri)
+	{
+		$kueri->where('title','like','%d%');
+	})->with('dosen','matakuliah')->groupBy('dosen_id')->get();
+});
+
+Route::get('/coba3', function()
+{
+	return \App\jadwal_matakuliah::whereHas('mahasiswa',function($query)
+	{
+		$query->where('nama','like','%a%');
+	})->with('mahasiswa')->groupBy('mahasiswa_id')->get();
+});
+
+Route::get('/coba4', function()
+{
+	return \App\jadwal_matakuliah::whereHas('mahasiswa',function($query)
+	{
+		$query->where('nama','like','%a%');
+	})->orWhereHas('ruangan',function($kueri)
+	{
+		$kueri->where('title','like','%d%');
+	})->with('mahasiswa','ruangan')->groupBy('mahasiswa_id')->get();
+});
+
+Route::get('ujiHas','RelationshipRebornController@ujiHas');
+Route::get('ujiHas2','RelationshipRebornController@ujiHas2');
+Route::get('ujiDoesntHave','RelationshipRebornController@ujiDoesntHave');
+Route::get('ujiDoesntHave2','RelationshipRebornController@ujiDoesntHave2');
+
+
 Route::get('jadwal_matakuliah/lihat/{jadwal_matakuliah}', 'jadwal_matakuliahController@lihat');
 Route::post('jadwal_matakuliah/simpan','jadwal_matakuliahController@simpan');
 Route::get('jadwal_matakuliah/edit/{jadwal_matakuliah}', 'jadwal_matakuliahController@edit');
