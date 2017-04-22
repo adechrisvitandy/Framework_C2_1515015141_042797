@@ -10,6 +10,45 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+
+Route::get('/login','sesiController@form');
+Route::post('/login','sesiController@validasi');
+Route::get('/logout','sesiController@logout');
+Route::get('/','sesiController@index');
+
+
+
+
+
+Route::get('/coba5', function(Illuminate\Http\Request $request)
+{
+	echo "iniadalah request dari method get" . $request->nama;
+});
+
+
+
+
+use Illuminate\Http\Request;
+Route::get('/coba6', function()
+{
+	echo Form::open(['url'=>'/coba6']).
+	Form::label('nama').
+	Form::text('nama',null).
+	Form::submit('kirim').
+	Form::close();
+}
+);
+
+Route::post('/coba6', function (Request $request)
+{
+	echo "ini adalah hasil dari form input" . $request->nama;
+}
+);
+
+
+
+
+
 Route::get('/coba', function()
 {
 	return \App\dosen_matakuliah::whereHas('dosen',function($query)

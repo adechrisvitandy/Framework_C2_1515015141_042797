@@ -23,6 +23,13 @@ class MahasiswaController extends Controller
     }
     public function simpan(Request $input)
     {   
+        $this->validate($input,[
+        'username'=>'required',
+        'password'=>'required',
+        'nama'=>'required',
+        'nim'=>'required',
+        'alamat'=>'required',
+        ]);
         $pengguna = new Pengguna($input->only('username','password'));
         if ($pengguna->save()){
         $mahasiswa = new mahasiswa;

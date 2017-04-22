@@ -23,6 +23,13 @@ class dosenController extends Controller
     }
     public function simpan(Request $input)
     {   
+        $this->validate($input,[
+        'username'=>'required',
+        'password'=>'required',
+        'nama'=>'required',
+        'nip'=>'required',
+        'alamat'=>'required',
+        ]);
         $pengguna = new Pengguna($input->only('username','password'));
         if ($pengguna->save()){
         $dosen = new dosen;

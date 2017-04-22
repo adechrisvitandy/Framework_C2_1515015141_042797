@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>@yield('page_title','Halaman Awal') | Laboratorium Pemograman FW</title>
+
     <link rel="stylesheet" type="text/css" href="{{asset('component/bootstrap/dist/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('component/font-awesome/css/font-awesome.min.css')}}">
     <style type="text/css">
@@ -63,6 +64,7 @@
                             <li><a href="{{ url('matakuliah') }}">Matakuliah</a></li>                           
                         </ul>
                     </li>
+                    <li><a href="{{url('logout')}}">Logout</a></li>
                 </ul>
                 </div><!--/.nav collapse-->
             </div>
@@ -76,6 +78,15 @@
                 </div>
             @endif
             @yield('container')
+            @if(count($errors) > 0)
+            <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+            </div>
+            @endif
             </div>
             <nav class="navbar navbar-default navbar-fixed-bottom">
                 <footer class="container">
