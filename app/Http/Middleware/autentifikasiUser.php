@@ -1,22 +1,21 @@
-<?php
-
-namespace App\Http\Middleware;
+<?php namespace App\Http\Middleware;
 
 use Closure;
 
-class autentifikasiUser
+class AutentifikasiUser
 {
     private $auth;
-    public function _construct(){
-
-        $this->auth = app('auth')
+    public function __construct()
+    {
+        $this->auth = app('auth');
     }
     public function handle($request, Closure $next)
     {
-        //return $next($request);
-        if($this->auth->check()){
-            return $next($request)
+        if ($this->auth->check())
+        {
+            return $next($request);
+            # code...
         }
-        return redirect('login')->withErrors('silahkan login terlebih dahulu');
+        return redirect('login')->withErrors('Silahkan Login Terlebih Dahulu');
     }
 }

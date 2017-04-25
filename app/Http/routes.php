@@ -93,7 +93,23 @@ Route::get('ujiDoesntHave','RelationshipRebornController@ujiDoesntHave');
 Route::get('ujiDoesntHave2','RelationshipRebornController@ujiDoesntHave2');
 
 
-Route::get('jadwal_matakuliah/lihat/{jadwal_matakuliah}', 'jadwal_matakuliahController@lihat');
+
+Route::get('/', function () {
+    return view('master');
+});
+Route::get('/public', function () {
+    return ('Nama saya : Adechrisvitandy');
+});
+Route::get('hello-word', function () {
+    return ('Hello word');
+});
+Route::get('pengguna/{pengguna}', function ($pengguna) {
+    return ("Hello word dari pengguna $pengguna");
+});
+
+Route::group(['middleware'=>'AutentifikasiUser'],function(){
+	
+Route::get('jadwal_matakuliah/lihat/{jadwal_matakuliah}','jadwal_matakuliahController@lihat');
 Route::post('jadwal_matakuliah/simpan','jadwal_matakuliahController@simpan');
 Route::get('jadwal_matakuliah/edit/{jadwal_matakuliah}', 'jadwal_matakuliahController@edit');
 Route::post('jadwal_matakuliah/edit/{jadwal_matakuliah}','jadwal_matakuliahController@update');
@@ -160,19 +176,4 @@ Route::post('pengguna/edit/{pengguna}','penggunaController@update');
 Route::get('pengguna/hapus/{pengguna}','penggunaController@hapus');
 Route::get('pengguna/tambah','penggunaController@tambah');
 Route::get('pengguna','penggunaController@awal');
-
-
-
-Route::get('/', function () {
-    return view('master');
 });
-Route::get('/public', function () {
-    return ('Nama saya : Adechrisvitandy');
-});
-Route::get('hello-word', function () {
-    return ('Hello word');
-});
-Route::get('pengguna/{pengguna}', function ($pengguna) {
-    return ("Hello word dari pengguna $pengguna");
-});
-
